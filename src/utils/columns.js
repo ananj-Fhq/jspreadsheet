@@ -745,3 +745,37 @@ export const setColumnData = function(colNumber, data, force) {
         }
     }
 }
+
+export const setColumn = function(colIndex, props) {
+    const obj = this;
+    obj.options.columns[colIndex] = props;
+    return obj.options.columns[colIndex];
+}
+
+/**
+ * Get column properties for a specific column index
+ * 
+ * @param {number} columnIndex - The index of the column to get properties for
+ * @return {object} Column properties including width, title, align, type, and any custom properties
+ */
+export const getColumn = function(columnIndex) {
+    const obj = this;
+    
+    // Get the column properties from options
+    const columnProperties = obj.options.columns && obj.options.columns[columnIndex] 
+        ? { ...obj.options.columns[columnIndex] }
+        : {};
+    
+    // Add default properties if not set
+    return {
+        width: obj.options.defaultColWidth || 100,
+        align: obj.options.defaultColAlign || 'center',
+        type: 'text',
+        ...columnProperties,
+        // Add runtime properties
+        element: obj.headers[columnIndex],
+        colElement: obj.cols[columnIndex]?.colElement,
+        index: columnIndex,
+        isHidden: obj.headers[columnIndex]?.style.display === 'none'
+    };
+}

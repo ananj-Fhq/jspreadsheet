@@ -1763,6 +1763,11 @@ declare namespace jspreadsheet {
     getHeight(row: number): string;
 
     /**
+     * Get the column of the property of the worksheet.
+     */
+    getColumn(index: number): any;
+
+    /**
      * Get the coordinates of the highlighted selections.
      */
     getHighlighted: () => [number, number, number, number][]

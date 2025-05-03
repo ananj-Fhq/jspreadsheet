@@ -3,7 +3,7 @@ import jSuites from 'jsuites';
 import libraryBase from './libraryBase.js';
 
 import { parseCSV } from './helpers.js';
-import { createCellHeader, deleteColumn, getColumnData, getNumberOfColumns, getWidth, hideColumn, insertColumn, moveColumn, setColumnData, setWidth, showColumn } from './columns.js';
+import { createCellHeader, deleteColumn, getColumnData, getNumberOfColumns, getWidth, hideColumn, insertColumn, moveColumn, setColumnData, setWidth, showColumn, getColumn, setColumn } from './columns.js';
 import { getData, getDataFromRange, getValue, getValueFromCoords, setData, setValue, setValueFromCoords } from './data.js';
 import { cutControls, scrollControls, wheelControls } from './events.js';
 import { getHighlighted, getRange, getSelected, getSelectedColumns, getSelectedRows, getSelection, isSelected, resetSelection, selectAll, updateSelectionFromCoords } from './selection.js';
@@ -31,7 +31,7 @@ import { redo, undo } from './history.js';
 const setWorksheetFunctions = function(worksheet) {
     for (let i = 0; i < worksheetPublicMethodsLength; i++) {
         const [methodName, method] = worksheetPublicMethods[i];
-
+        console.log(`Setting method: ${methodName}`);
         worksheet[methodName] = method.bind(worksheet);
     }
 }
@@ -621,6 +621,8 @@ const worksheetPublicMethods = [
     ['deleteColumn', deleteColumn],
     ['getColumnData', getColumnData],
     ['setColumnData', setColumnData],
+    ['getColumn', getColumn],
+    ['setColumn', setColumn],
     ['whichPage', whichPage],
     ['page', page],
     ['download', download],
