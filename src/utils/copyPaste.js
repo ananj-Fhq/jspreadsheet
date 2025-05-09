@@ -425,8 +425,8 @@ export const paste = function(x, y, data) {
         for (let j = 0; j < data.length; j++) {
             for (let i = 0; i < data[j].length; i++) {
                 eventRecords.push({
-                    x: i + x,
-                    y: j + y,
+                    x: i + parseInt(x),
+                    y: j + parseInt(y),
                     value: data[j][i],
                 });
             }
