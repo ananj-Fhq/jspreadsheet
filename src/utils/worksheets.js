@@ -31,7 +31,6 @@ import { redo, undo } from './history.js';
 const setWorksheetFunctions = function(worksheet) {
     for (let i = 0; i < worksheetPublicMethodsLength; i++) {
         const [methodName, method] = worksheetPublicMethods[i];
-        console.log(`Setting method: ${methodName}`);
         worksheet[methodName] = method.bind(worksheet);
     }
 }
