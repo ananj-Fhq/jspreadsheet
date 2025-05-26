@@ -772,6 +772,7 @@ export const updateFormulaChain = function(x, y, records) {
  * Update formula
  */
 export const updateFormula = function(formula, referencesToUpdate) {
+    return formula;
     const testLetter = /[A-Z]/;
     const testNumber = /[0-9]/;
 
@@ -814,6 +815,7 @@ export const updateFormula = function(formula, referencesToUpdate) {
  * Update formulas
  */
 const updateFormulas = function(referencesToUpdate) {
+    return;
     const obj = this;
 
     // Update formulas
